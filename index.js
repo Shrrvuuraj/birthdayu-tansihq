@@ -1,6 +1,11 @@
 let count=0;
 let img=document.querySelector(".img")
 let btn=document.querySelector(".sliding-btn")
+let container =document.querySelector(".container")
+let option=document.querySelector(".option")
+let main=document.querySelector(".main")
+console.log(main);
+
 console.log(btn);
 
 
@@ -46,7 +51,7 @@ case 4:
     break
 case 5:
     img.innerHTML =`<img src="assests/gu.jpg" alt="Gobar"></img>
-    <p class="p"> Sahi pitati hai Ladkiya  </p>`
+    <p class="p"> Sahi pit ti hai Ladkiya  </p>`
     break
 case 6:
    img.innerHTML =`<img src="assests/gu.jpg" alt="Gobar"></img>
@@ -56,4 +61,20 @@ case 6:
 
     }
   
+}
+
+
+function gu(){
+ option.remove()
+ container.style.backgroundColor = "transparent";
+ container.style.border="0px";
+ img.innerHTML=` <img src="assests/img 2.jpg" alt="" style="width: 100%;">`
+ setTimeout(()=>{
+    img.innerHTML=` <img src="assests/img.jpg" alt="" style="width: 100%;">`
+    setTimeout(()=>{
+        img.innerHTML=`<video src="assests/video.mp4" controls autoplay style="width: 100%;">Your browser does not support the video tag.</video>`
+     },3000)
+ },3000)
+
+
 }
