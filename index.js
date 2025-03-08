@@ -169,53 +169,53 @@ function startConfetti() {
 
 
 
-const audioPlayer = (() => {
-    let clickCount = 0;
-    let totalDuration = 0;
-    const audio = new Audio();
-    audio.src = "assests/yo.m4a"; // ← Your audio path here
-    audio.type = "audio/mpeg";
+// const audioPlayer = (() => {
+//     let clickCount = 0;
+//     let totalDuration = 0;
+//     const audio = new Audio();
+//     audio.src = "assests/yo.m4a"; // ← Your audio path here
+//     audio.type = "audio/mpeg";
     
     
-    // Initialize audio duration once loaded
-    audio.addEventListener('loadedmetadata', () => {
-        totalDuration = audio.duration;
-    });
+//     // Initialize audio duration once loaded
+//     audio.addEventListener('loadedmetadata', () => {
+//         totalDuration = audio.duration;
+//     });
 
-    return () => {
-        clickCount++;
+//     return () => {
+//         clickCount++;
         
-        if (clickCount <= 6) {
-            const segment = totalDuration / 6;
-            const startTime = (clickCount - 1) * segment;
-            const endTime = clickCount * segment;
+//         if (clickCount <= 6) {
+//             const segment = totalDuration / 6;
+//             const startTime = (clickCount - 1) * segment;
+//             const endTime = clickCount * segment;
 
-            audio.currentTime = startTime;
-            audio.play();
+//             audio.currentTime = startTime;
+//             audio.play();
 
-            // Auto-pause at segment end
-            const stopAtEnd = () => {
-                if (audio.currentTime >= endTime || 
-                   (clickCount === 6 && audio.currentTime === totalDuration)) {
-                    audio.pause();
-                    audio.removeEventListener('timeupdate', stopAtEnd);
-                }
-            };
+//             // Auto-pause at segment end
+//             const stopAtEnd = () => {
+//                 if (audio.currentTime >= endTime || 
+//                    (clickCount === 6 && audio.currentTime === totalDuration)) {
+//                     audio.pause();
+//                     audio.removeEventListener('timeupdate', stopAtEnd);
+//                 }
+//             };
             
-            audio.addEventListener('timeupdate', stopAtEnd);
-        }
+//             audio.addEventListener('timeupdate', stopAtEnd);
+//         }
 
-        // Reset after 6 clicks
-        if (clickCount === 6) {
-            setTimeout(() => {
-                clickCount = 0;
-                audio.currentTime = 0;
-            }, 500);
-        }
-    };
-})();
+//         // Reset after 6 clicks
+//         if (clickCount === 6) {
+//             setTimeout(() => {
+//                 clickCount = 0;
+//                 audio.currentTime = 0;
+//             }, 500);
+//         }
+//     };
+// })();
 
-// Assign to global scope for button click
-function playAudio() {
-    audioPlayer();
-}
+// // Assign to global scope for button click
+// function playAudio() {
+//     audioPlayer();
+// }
