@@ -1,0 +1,92 @@
+* {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+     transition: all ease 0.3s;
+     color: #484843;
+}
+body {
+     margin: 0;
+     overflow: hidden; /* Prevents scrolling */
+     height: 100vh;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     background-color: #ffe4e1; /* Soft pink background */
+ }
+
+.main {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     flex-direction: column;
+     width: 100vw;
+     height: 100vh;
+     background: url(assests/download.jpg);
+     background-repeat: no-repeat;
+     background-size: cover;
+     background-position: center;
+}
+
+.container {
+     border: 5px solid #c1e9cd;
+     border-radius: 20px;
+     padding: 20px;
+     background: #cfdfd4; /* Light background for better readability */
+}
+
+.img {
+     width: 300px;
+     padding: 10px;
+     aspect-ratio: 1/1;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+}
+
+h2 {
+     color: black;
+     font-size: 22px;
+     text-align: center;
+}
+
+.option {
+     display: flex;
+     justify-content: space-evenly;
+     align-items: center;
+     margin-top: 15px;
+}
+
+button {
+     border: none;
+     background-color: white;
+     padding: 10px 20px;
+     font-size: 18px;
+     border-radius: 10px;
+     cursor: pointer;
+     font-weight: bold;
+     transition: background 0.3s ease;
+     z-index: 2
+     ;
+}
+
+button:hover {
+     background-color: pink;
+}
+.sliding-btn {
+     padding: 10px 20px;
+     font-size: 18px;
+     background-color: #ff66b2;
+     color: white;
+     border: none;
+     cursor: pointer;
+     position: relative;
+     transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out; 
+     position: absolute;
+     z-index: 999;
+ }
+ 
+ .sliding-btn.slip {
+     opacity: 0;
+ }
+ 
