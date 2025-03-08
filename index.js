@@ -140,7 +140,7 @@ function startConfetti() {
             x: Math.random() * canvas.width,
             y: Math.random() * canvas.height,
             r: Math.random() * 4 + 1,
-            d: Math.random() * 4,
+            d: 2, // Constant speed for all particles
             color: `hsl(${Math.random() * 360}, 100%, 50%)`
         });
     }
@@ -159,6 +159,7 @@ function startConfetti() {
     }
     draw();
 }
+
 
 
 let ayeein=new Audio()
