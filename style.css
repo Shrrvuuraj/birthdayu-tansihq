@@ -14,6 +14,14 @@ body {
      align-items: center;
      background-color: #ffe4e1; /* Soft pink background */
  }
+ canvas{
+     position: fixed;
+     top: 0;
+     left: 0;
+     width: 100vw;
+     height: 100vh;
+     pointer-events: none;
+ }
 
 .main {
      display: flex;
@@ -36,21 +44,42 @@ body {
 }
 
 .img {
+     position: relative;
      width: 300px;
-     padding: 10px;
+     padding: 0px 10px;
      aspect-ratio: 1/1;
      display: flex;
      justify-content: center;
-     align-items: center;
+     align-items: flex-start;
+     flex-grow: 0;
      flex-direction: column;
+     text-align: center;
+     h1{
+          font-size: 52px;
+          background: url(assests/img2.jpg);
+          background-clip: text;
+          -webkit-background-clip: text;
+          color: transparent;
+          background-position: center 59%; 
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+          animation: up 1s forwards ;
+     }
      p{
           font-family: 'Pacifico', cursive;
-
+          font-size: 25px;
           padding: 10px;
           font-weight: 600;
      }
 }
 
+#content{
+    
+    align-self: flex-start; /* Stays at the top */
+   flex-grow: 0; /* Prevents it from pushing content upward */
+   width: 100%; /* Adjust width as needed */
+}
 h2 {
      color: black;
      font-size: 22px;
@@ -98,4 +127,54 @@ button:hover {
  .sliding-btn.slip {
      opacity: 0;
  }
- 
+ @keyframes up{
+     0%{
+          top: 0;
+     }
+
+     100%{
+          top: -188px;
+     }
+ }
+
+
+
+.div{
+     display: flex;
+     flex-direction: row;
+}
+
+
+
+
+
+/* ballonnn */
+.ballon{
+     position: relative;
+     width: 100vw;
+     height: 100vh;
+     overflow: hidden;
+
+     
+ }
+ .ballon img{
+     
+           position: absolute;
+           animation: ballon 5s linear infinite;
+           bottom: -100px;
+      }
+     
+      @keyframes ballon {
+      0% {
+           bottom: -100px;
+           opacity: 0;
+      }
+      20% {
+           opacity: 1;
+      }
+      100% {
+           bottom: 100vh;
+           opacity: 0;
+     
+ }}
+

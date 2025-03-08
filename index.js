@@ -64,17 +64,158 @@ case 6:
 }
 
 
-function gu(){
- option.remove()
- container.style.backgroundColor = "transparent";
- container.style.border="0px";
- img.innerHTML=` <img src="assests/img 2.jpg" alt="" style="width: 100%;">`
- setTimeout(()=>{
-    img.innerHTML=` <img src="assests/img.jpg" alt="" style="width: 100%;">`
-    setTimeout(()=>{
-        img.innerHTML=`<video src="assests/video.mp4" controls autoplay style="width: 100%;">Your browser does not support the video tag.</video>`
-     },3000)
- },3000)
+// function gu() {
+//     option.remove(); // Remove option buttons
+//     container.style.border = "0px";
+
+//     // Ensure the img container starts with the heading at the top
+//     img.innerHTML = `<h1 class="up">Happy Birthday Nisha</h1>
+//                      <div id="content"></div>`;  // Empty div for images/videos
+
+//     let content = document.getElementById("content");
+    
+//     setTimeout(() => {
+//         content.innerHTML = `<img src="assests/img2.jpg" alt="" style="width: 100%;">`;
+//         setTimeout(() => {
+//             content.innerHTML = `<img src="assests/img.jpg" alt="" style="width: 100%;">`;
+//             setTimeout(() => {
+//                 content.innerHTML = `<video src="assests/video.mp4" autoplay style="width: 100%;">Your browser does not support the video tag.</video>`;
+//             }, 3000);
+//         }, 3000);
+//     }, 3000);
+// }
+function gu() {
+    option.remove(); // Remove buttons
+    container.style.border = "0px";
+
+    img.innerHTML = `<h1 class="up">Happy Birthday Nisha</h1>
+                     <div id="content"></div>`;  // Empty div for images/videos
+
+    let content = document.getElementById("content");
+
+    setTimeout(() => {
+        content.innerHTML = `<img src="assests/img2.jpg" alt="" style="width: 100%;">`;
+        container.style.height = container.scrollHeight + "px"; // Adjust height dynamically
+
+        setTimeout(() => {
+            content.innerHTML = `<img src="assests/img.jpg" alt="" style="width: 100%;">`;
+            container.style.height = container.scrollHeight + "px";
+
+            setTimeout(() => {
+                content.innerHTML = `
+                    <video id="birthdayVideo" src="assests/video.mp4" autoplay style="width: 100%;">
+                        Your browser does not support the video tag.
+                    </video>
+                `;
+                container.style.height = container.scrollHeight + "px";
+
+                // Wait for the video to finish before removing elements
+                let video = document.getElementById("birthdayVideo");
+                video.onended = () => {
+                    img.remove();
+                    container.remove();
+                };
+
+            }, 3000);
+        }, 3000);
+    }, 3000);
+}
 
 
+              
+ 
+
+
+
+function startConfetti() {
+    let canvas = document.getElementById("confetti");
+    let ctx = canvas.getContext("2d");
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    let particles = [];
+    for (let i = 0; i < 100; i++) {
+        particles.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            r: Math.random() * 4 + 1,
+            d: Math.random() * 4,
+            color: `hsl(${Math.random() * 360}, 100%, 50%)`
+        });
+    }
+
+    function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach(p => {
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+            ctx.fillStyle = p.color;
+            ctx.fill();
+            p.y += p.d;
+            if (p.y > canvas.height) p.y = 0;
+        });
+        requestAnimationFrame(draw);
+    }
+    draw();
+}
+
+
+
+
+
+
+
+
+
+
+const audioPlayer = (() => {
+    let clickCount = 0;
+    let totalDuration = 0;
+    const audio = new Audio();
+    audio.src = "assests/yo.m4a"; // ← Your audio path here
+    audio.type = "audio/mpeg";
+    
+    
+    // Initialize audio duration once loaded
+    audio.addEventListener('loadedmetadata', () => {
+        totalDuration = audio.duration;
+    });
+
+    return () => {
+        clickCount++;
+        
+        if (clickCount <= 6) {
+            const segment = totalDuration / 6;
+            const startTime = (clickCount - 1) * segment;
+            const endTime = clickCount * segment;
+
+            audio.currentTime = startTime;
+            audio.play();
+
+            // Auto-pause at segment end
+            const stopAtEnd = () => {
+                if (audio.currentTime >= endTime || 
+                   (clickCount === 6 && audio.currentTime === totalDuration)) {
+                    audio.pause();
+                    audio.removeEventListener('timeupdate', stopAtEnd);
+                }
+            };
+            
+            audio.addEventListener('timeupdate', stopAtEnd);
+        }
+
+        // Reset after 6 clicks
+        if (clickCount === 6) {
+            setTimeout(() => {
+                clickCount = 0;
+                audio.currentTime = 0;
+            }, 500);
+        }
+    };
+})();
+
+// Assign to global scope for button click
+function playAudio() {
+    audioPlayer();
 }

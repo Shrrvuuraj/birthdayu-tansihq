@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confetti Effect</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #222; /* Dark background for contrast */
+        }
+
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none; /* Doesn't block button clicks */
+        }
+    </style>
+</head>
+<body>
+
+<canvas id="confetti"></canvas>
+
+<script>
+    let canvas = document.getElementById("confetti");
+    let ctx = canvas.getContext("2d");
+
+    // Make canvas full screen
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    let particles = [];
+    let maxParticles = 100; // Number of confetti pieces
+
+    // Random colors
+    let colors = ["#ff0000", "#ff7f00", "#ffff00", "#00ff00", "#0000ff", "#8b00ff"];
+
+    // Create confetti particles
+    for (let i = 0; i < maxParticles; i++) {
+        particles.push({
+            x: Math.random() * canvas.width,  // Random X position
+            y: Math.random() * canvas.height, // Random Y position
+            r: Math.random() * 6 + 2,  // Size (2px to 8px)
+            d: Math.random() * 3 + 2,  // Speed (2 to 5)
+            color: colors[Math.floor(Math.random() * colors.length)] // Random color
+        });
+    }
+
+    function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        particles.forEach(p => {
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+            ctx.fillStyle = p.color;
+            ctx.fill();
+
+            p.y += p.d; // Move downward at different speeds
+
+            // Respawn confetti at the top when it reaches the bottom
+            if (p.y > canvas.height) {
+                p.y = 0;
+                p.x = Math.random() * canvas.width;
+            }
+        });
+
+        requestAnimationFrame(draw);
+    }
+
+    draw();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+     body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+    font-family: 'Arial', sans-serif;
+}
+
+.birthday-message {
+    text-align: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    animation: popUp 1s ease-in-out;
+}
+
+h1 {
+    font-size: 3rem;
+    color: #ff6f61;
+    animation: colorChange 2s infinite alternate;
+}
+
+p {
+    font-size: 1.5rem;
+    color: #333;
+}
+
+@keyframes popUp {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes colorChange {
+    0% {
+        color: #ff6f61;
+    }
+    50% {
+        color: #6b5b95;
+    }
+    100% {
+        color: #88b04b;
+    }
+}
+    </style>
+</head>
+<body>
+    <div class="birthday-message">
+        <h1>Happy Birthday!</h1>
+        <p>Wishing you a fantastic day filled with joy and happiness!</p>
+    </div>
+
+    <script > // You can add any interactive JavaScript here if needed
+     // For example, you can add a confetti effect or play a sound
+     
+     // Example: Adding a simple confetti effect using a library like canvas-confetti
+     // Make sure to include the canvas-confetti library in your HTML file
+     // <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+     
+     document.addEventListener('DOMContentLoaded', () => {
+         confetti({
+             particleCount: 100,
+             spread: 70,
+             origin: { y: 0.6 }
+         });
+     });</script>
+</body>
+</html>
