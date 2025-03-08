@@ -4,9 +4,7 @@ let btn=document.querySelector(".sliding-btn")
 let container =document.querySelector(".container")
 let option=document.querySelector(".option")
 let main=document.querySelector(".main")
-console.log(main);
-
-console.log(btn);
+let wish= document.querySelector(".wish")
 
 
 
@@ -64,26 +62,7 @@ case 6:
 }
 
 
-// function gu() {
-//     option.remove(); // Remove option buttons
-//     container.style.border = "0px";
 
-//     // Ensure the img container starts with the heading at the top
-//     img.innerHTML = `<h1 class="up">Happy Birthday Nisha</h1>
-//                      <div id="content"></div>`;  // Empty div for images/videos
-
-//     let content = document.getElementById("content");
-    
-//     setTimeout(() => {
-//         content.innerHTML = `<img src="assests/img2.jpg" alt="" style="width: 100%;">`;
-//         setTimeout(() => {
-//             content.innerHTML = `<img src="assests/img.jpg" alt="" style="width: 100%;">`;
-//             setTimeout(() => {
-//                 content.innerHTML = `<video src="assests/video.mp4" autoplay style="width: 100%;">Your browser does not support the video tag.</video>`;
-//             }, 3000);
-//         }, 3000);
-//     }, 3000);
-// }
 function gu() {
     option.remove(); // Remove buttons
     container.style.border = "0px";
@@ -113,7 +92,10 @@ function gu() {
                 let video = document.getElementById("birthdayVideo");
                 video.onended = () => {
                     img.remove();
-                    container.remove();
+                    container.remove()
+                   
+                        wish.style.display = "block";
+                  
                 };
 
             }, 3000);

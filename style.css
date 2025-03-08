@@ -136,7 +136,21 @@ button:hover {
           top: -188px;
      }
  }
-
+.wish{
+     display: none;
+     h1{
+          background: url(assests/img.jpg);
+          background-clip: text;
+          -webkit-background-clip: text;
+          color: transparent;
+          background-position: 34% 53%;
+          text-align: center;
+          width: 150px;
+          
+          background-size: 500px;
+          background-repeat: no-repeat;
+     }
+}
 
 
 
