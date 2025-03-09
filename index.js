@@ -5,6 +5,9 @@ let container =document.querySelector(".container")
 let option=document.querySelector(".option")
 let main=document.querySelector(".main")
 let wish= document.querySelector(".wish")
+let guSong= new Audio()
+guSong.src="assests/happy.m4a"
+guSong.currentTime=13;
 
 
 
@@ -64,6 +67,7 @@ case 6:
 
 
 function gu() {
+    guSong.play();
     option.remove(); // Remove buttons
     container.style.border = "0px";
 
