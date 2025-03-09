@@ -152,6 +152,18 @@ button:hover {
      }
 }
 
+@media (min-width: 768px) { 
+     .sliding-btn{
+          left: 818px;
+     }
+   }
+   
+   @media (max-width: 480px) {  
+     .sliding-btn{
+          left: 47px;
+     }
+   }
+
 
 
 
