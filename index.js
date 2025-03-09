@@ -6,7 +6,7 @@ let option=document.querySelector(".option")
 let main=document.querySelector(".main")
 let wish= document.querySelector(".wish")
 let guSong= new Audio()
-guSong.src="assests/Tagadi.m4a"
+guSong.src="assests/Tagadi.mp3"
 guSong.currentTime=13;
 
 
@@ -71,7 +71,7 @@ function gu() {
     option.remove(); // Remove buttons
     container.style.border = "0px";
 
-    img.innerHTML = `<h1 class="up">Happy Birthday Nisha</h1>
+    img.innerHTML = `<h1 class="up">Happy Birthday Nishita</h1>
                      <div id="content"></div>`;  // Empty div for images/videos
 
     let content = document.getElementById("content");
